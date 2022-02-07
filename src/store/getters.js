@@ -1,6 +1,8 @@
 const getters = {
-  userInfo: state => state.menu.info,
-  navMenus: state => state.menu.navMenus,
+  token: state => state.user.token,
+  roles: state => state.user.roles,
+  userInfo: state => state.user.info,
+  navMenus: state => state.user.navMenus,
   deviceHeight: state => state.menu.deviceHeight,
   isCollapse: state => state.menu.isCollapse,
   menuWidth: state => state.menu.menuWidth,

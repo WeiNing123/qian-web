@@ -54,8 +54,8 @@ export default {
   },
   computed: {
     ...mapState({
-      navMenus: (state) => state.menu.navMenus,
-      activeMenu: (state) => state.menu.activeMenu,
+      navMenus: (state) => state.user.navMenus,
+      activeMenu: (state) => state.user.activeMenu,
       isCollapse: (state) => state.menu.isCollapse,
       editableTabs: (state) => state.menu.editableTabs,
       activeTabIndex: (state) => state.menu.activeTabIndex

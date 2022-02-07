@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     ...mapState({
-      userInfo: (state) => state.menu.info,
+      userInfo: (state) => state.user.info,
       isCollapse: (state) => state.menu.isCollapse
     })
   },

@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState({
-      navMenus: (state) => state.menu.navMenus,
+      navMenus: (state) => state.user.navMenus,
       menuWidth: (state) => state.menu.menuWidth + 'px',
       isCollapse: (state) => state.menu.isCollapse,
       editableTabs: (state) => state.menu.editableTabs,

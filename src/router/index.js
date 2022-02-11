@@ -98,7 +98,7 @@ router.beforeEach(async (to, from, next) => {
 
         const menuTree = D2T(menu)
         let addRoutes = addDynamicRoutes(menuTree)
-        console.log('addRoutes', addRoutes)
+        // console.log('addRoutes', addRoutes)
         const len = router.options.routes.length
         router.options.routes[len - 1].children = router.options.routes[len - 1].children.concat(addRoutes)
         router.addRoutes(router.options.routes)

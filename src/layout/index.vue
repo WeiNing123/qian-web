@@ -3,7 +3,7 @@
     <el-aside class="aside-context" :style="{'min-height': asideHeight, 'width': menuWidth}">
       <div class="aside-header">
         <img :src="logo" class="aside-logo">
-        <div v-show="!isCollapse" class="aside-title">&nbsp;Tabs 标签页 Dome</div>
+        <div v-show="!isCollapse" class="aside-title">个人综合应用平台</div>
       </div>
       <Menu></Menu>
     </el-aside>
@@ -164,7 +164,7 @@ export default {
   float: left;
 }
 .menu-nav {
-  padding: 0;
+  padding: 0 15px;
   width: 100%;
 }
 </style>

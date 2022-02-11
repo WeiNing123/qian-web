@@ -1,5 +1,5 @@
 <template>
-  <div>一键查询</div>
+  <div>Redis</div>
 </template>
 
 <script>

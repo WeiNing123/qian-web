@@ -266,6 +266,7 @@ export default {
       }
       this.$post('/main/menu/add', this.addForm).then(res => {
         this.loadData()
+        this.loadTreeData()
         this.$notify({ title: '提示', message: '添加成功!', type: 'success' })
         this.addDialog = false
       })
@@ -313,6 +314,7 @@ export default {
     trueEdit () {
       this.$post('/main/menu/edit', this.editForm).then(res => {
         this.loadData()
+        this.loadTreeData()
         this.$notify({ title: '提示', message: '修改成功!', type: 'success' })
         this.editDialog = false
       })
@@ -343,6 +345,7 @@ export default {
         }).then(() => {
           this.$post('/main/menu/delete', {id: row.id}).then(res => {
             this.loadData()
+            this.loadTreeData()
             this.$notify({ title: '提示', message: '删除成功!', type: 'success' })
           })
         }).catch(() => {})

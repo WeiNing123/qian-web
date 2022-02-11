@@ -1,5 +1,5 @@
 <template>
-  <div>关键件追溯</div>
+  <div>Linux</div>
 </template>
 
 <script>

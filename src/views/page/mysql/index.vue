@@ -1,5 +1,5 @@
 <template>
-  <div>质量信息追溯</div>
+  <div>MySQL</div>
 </template>
 
 <script>

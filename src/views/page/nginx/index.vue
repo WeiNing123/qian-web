@@ -1,5 +1,5 @@
 <template>
-  <div>生产信息追溯</div>
+  <div>Nginx</div>
 </template>
 
 <script>

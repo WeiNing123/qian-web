@@ -1,5 +1,5 @@
 <template>
-  <div>向前追溯</div>
+  <div>Java</div>
 </template>
 
 <script>

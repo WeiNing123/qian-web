@@ -1,5 +1,5 @@
 <template>
-  <div>向后追溯</div>
+  <div>服务器信息</div>
 </template>
 
 <script>

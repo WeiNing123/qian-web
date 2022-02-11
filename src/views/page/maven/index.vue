@@ -1,9 +1,13 @@
 <template>
-  <div>销售及售后服务信息追溯</div>
+  <div>Maven</div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+    }
+  }
 }
 </script>
 

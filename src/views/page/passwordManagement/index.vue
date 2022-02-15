@@ -194,20 +194,16 @@ export default {
       })
     },
     handleDelete (index, row) {
-      if (row.children && row.children.length > 0) {
-        this.$notify({ title: '提示', message: '当前菜单包含子菜单，不可删除!', type: 'error' })
-      } else {
-        this.$confirm('您确认删除该记录吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$post('/main/passwordManagement/delete', {id: row.id}).then(res => {
-            this.loadData()
-            this.$notify({ title: '提示', message: '删除成功!', type: 'success' })
-          })
-        }).catch(() => {})
-      }
+      this.$confirm('您确认删除该记录吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$post('/main/passwordManagement/delete', {id: row.id}).then(res => {
+          this.loadData()
+          this.$notify({ title: '提示', message: '删除成功!', type: 'success' })
+        })
+      }).catch(() => {})
     }
   }
 }

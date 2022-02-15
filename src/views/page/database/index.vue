@@ -143,7 +143,7 @@ export default {
     },
     loadData () {
       this.loading = true
-      this.$post('/main/server/list', this.param).then(res => {
+      this.$post('/main/database/list', this.param).then(res => {
         this.tableData = res.records
         this.totalCount = res.total
         this.loading = false
@@ -174,7 +174,7 @@ export default {
         this.$notify({ title: '提示', message: '密码必填!', type: 'error' })
         return
       }
-      this.$post('/main/server/add', this.addForm).then(res => {
+      this.$post('/main/database/add', this.addForm).then(res => {
         this.loadData()
         this.$notify({ title: '提示', message: '添加成功!', type: 'success' })
         this.addDialog = false
@@ -206,7 +206,7 @@ export default {
         this.$notify({ title: '提示', message: '密码必填!', type: 'error' })
         return
       }
-      this.$post('/main/server/edit', this.editForm).then(res => {
+      this.$post('/main/database/edit', this.editForm).then(res => {
         this.loadData()
         this.$notify({ title: '提示', message: '修改成功!', type: 'success' })
         this.editDialog = false
@@ -218,7 +218,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$post('/main/server/delete', {id: row.id}).then(res => {
+        this.$post('/main/database/delete', {id: row.id}).then(res => {
           this.loadData()
           this.$notify({ title: '提示', message: '删除成功!', type: 'success' })
         })

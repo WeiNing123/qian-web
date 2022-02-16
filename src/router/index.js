@@ -34,6 +34,11 @@ export const constantRoutes = [
     component: () => import('@/views/login')
   },
   {
+    path: '/seeFile',
+    name: 'seeFile',
+    component: () => import('@/views/page/filePage')
+  },
+  {
     path: '/404',
     component: () => import('@/views/exception/404')
   },

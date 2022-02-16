@@ -17,6 +17,7 @@
       <el-table-column prop="label" label="名称"></el-table-column>
       <el-table-column prop="ip" label="IP地址" align="center"></el-table-column>
       <el-table-column prop="port" label="端口" align="center"></el-table-column>
+      <el-table-column prop="userName" label="用户名" align="center"></el-table-column>
       <el-table-column prop="password" label="密码" align="center"></el-table-column>
       <el-table-column prop="remark" label="备注"></el-table-column>
       <el-table-column label="操作" width="180" align="center">
@@ -49,6 +50,9 @@
         <el-form-item label="端口" required>
           <el-input v-model="editForm.port"></el-input>
         </el-form-item>
+        <el-form-item label="用户名">
+          <el-input v-model="editForm.userName"></el-input>
+        </el-form-item>
         <el-form-item label="密码" required>
           <el-input v-model="editForm.password"></el-input>
         </el-form-item>
@@ -72,6 +76,9 @@
         </el-form-item>
         <el-form-item label="端口" required>
           <el-input v-model="addForm.port"></el-input>
+        </el-form-item>
+        <el-form-item label="用户名">
+          <el-input v-model="addForm.userName"></el-input>
         </el-form-item>
         <el-form-item label="密码" required>
           <el-input v-model="addForm.password"></el-input>
@@ -110,6 +117,7 @@ export default {
         label: '',
         ip: '',
         port: '',
+        userName: '',
         password: '',
         remark: ''
       },
@@ -118,6 +126,7 @@ export default {
         label: '',
         ip: '',
         port: '',
+        userName: '',
         password: '',
         remark: ''
       },
@@ -153,6 +162,7 @@ export default {
       this.addForm.label = ''
       this.addForm.ip = ''
       this.addForm.port = ''
+      this.addForm.userName = ''
       this.addForm.password = ''
       this.addForm.remark = ''
       this.addDialog = true
@@ -185,6 +195,7 @@ export default {
       this.editForm.label = row.label
       this.editForm.ip = row.ip
       this.editForm.port = row.port
+      this.editForm.userName = row.userName
       this.editForm.password = row.password
       this.editForm.remark = row.remark
       this.editDialog = true

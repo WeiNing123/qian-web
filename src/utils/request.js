@@ -4,11 +4,12 @@ import storage from 'store'
 import { VueAxios } from './axios'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 import ElementUI from 'element-ui'
+import { baseUrl } from '../api/base'
 
 // 创建 axios 实例
 const request = axios.create({
   // API 请求的默认前缀
-  baseURL: 'http://localhost:8146/qian',
+  baseURL: baseUrl.url,
   timeout: 6000 // 请求超时时间
 })
 

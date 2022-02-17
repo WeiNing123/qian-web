@@ -250,7 +250,11 @@ export default {
       if (row.type === 1) {
         const routeData = this.$router.resolve({
           name: 'seeFile',
-          query: { path: row.path }
+          query: {
+            path: row.path,
+            category: row.category,
+            title: row.title
+          }
         })
         window.open(routeData.href, '_blank')
       } else {

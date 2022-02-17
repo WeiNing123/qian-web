@@ -1,5 +1,5 @@
 <template>
-  <div class="file-page-bg">
+  <div class="file-page-bg" :style="{ minHeight: height }">
     <div class="file-title-model">
       <div style="height: 20px;">&nbsp;</div>
       <div class="file-title-item"> 资料中心 > {{ category }}</div>
@@ -29,6 +29,11 @@ export default {
       let dom = document.getElementById('fileContent')
       dom.innerHTML = res.content.replaceAll('%##%', '<br>')
     })
+  },
+  computed: {
+    height: function () {
+      return window.innerHeight + 'px'
+    }
   }
 }
 </script>
@@ -38,7 +43,6 @@ export default {
   background-color: #eee;
   text-align: center;
   width: 100%;
-  height: 100%;
   padding: 15px 0 0;
 }
 .file-content {

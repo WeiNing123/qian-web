@@ -1,20 +1,20 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2758933 */
-  src: url('iconfont.woff2?t=1629459105484') format('woff2'),
-       url('iconfont.woff?t=1629459105484') format('woff'),
-       url('iconfont.ttf?t=1629459105484') format('truetype');
+  src: url('iconfont.woff2?t=1646643772538') format('woff2'),
+       url('iconfont.woff?t=1646643772538') format('woff'),
+       url('iconfont.ttf?t=1646643772538') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 18px;
-  margin-right: 5px;
-  width: 24px;
-  text-align: center;
+  font-size: 16px;
   font-style: normal;
-  display: inline-block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eye-close:before {
+  content: "\e66f";
 }
 
 .icon-icon_yijianchaxun:before {

@@ -16,9 +16,17 @@
       <el-table-column type="index" label="序号" align="center"></el-table-column>
       <el-table-column prop="label" label="名称"></el-table-column>
       <el-table-column prop="ip" label="IP地址" align="center"></el-table-column>
-      <el-table-column prop="port" label="端口" align="center"></el-table-column>
+      <el-table-column prop="port" label="端口" align="center" width="70"></el-table-column>
       <el-table-column prop="userName" label="用户名" align="center"></el-table-column>
-      <el-table-column prop="password" label="密码" align="center"></el-table-column>
+      <el-table-column label="密码" align="center" width="180">
+        <template slot-scope="scope">
+          <span v-if="scope.row.password === '-'">-</span>
+          <span v-if="scope.row.password !== '-'">
+            <span v-if="scope.row.iconCode === 1">●●●●●●  <i class="el-icon-view" @click="view(scope.row)" style="cursor:pointer;"></i></span>
+            <span v-if="scope.row.iconCode === 2">{{ scope.row.password }}  <i class="icon iconfont icon-eye-close" style="font-size: 12px; cursor:pointer;" @click="view(scope.row)"></i></span>
+          </span>
+        </template>
+      </el-table-column>
       <el-table-column prop="remark" label="备注"></el-table-column>
       <el-table-column label="操作" width="180" align="center">
         <template slot-scope="scope">
@@ -153,10 +161,20 @@ export default {
     loadData () {
       this.loading = true
       this.$post('/main/database/list', this.param).then(res => {
+        res.records.forEach((item) => {
+          item['iconCode'] = 1
+        })
         this.tableData = res.records
         this.totalCount = res.total
         this.loading = false
       })
+    },
+    view (row) {
+      if (row.iconCode === 1) {
+        row.iconCode = 2
+      } else {
+        row.iconCode = 1
+      }
     },
     addItem () {
       this.addForm.label = ''

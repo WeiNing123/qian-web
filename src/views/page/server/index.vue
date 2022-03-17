@@ -1,5 +1,15 @@
 <template>
   <div>
+    <search-bar>
+      <el-form :inline="true" :model="param" class="demo-form-inline">
+        <el-form-item label="名称：">
+          <el-input v-model="param.label" clearable></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="searchBtn"><i class="el-icon-search"></i></el-button>
+        </el-form-item>
+      </el-form>
+    </search-bar>
     <button-group>
       <el-row>
         <el-button size="small" type="success" @click="addItem()"><i class="el-icon-plus"></i> 新增</el-button>
@@ -99,16 +109,19 @@
 <script>
 import { mapState } from 'vuex'
 import ButtonGroup from '@/components/ButtonGroup'
+import SearchBar from '@/components/SearchBar'
 
 export default {
   components: {
-    ButtonGroup
+    ButtonGroup,
+    SearchBar
   },
   data () {
     return {
       param: {
         page: 1,
-        limit: 20
+        limit: 20,
+        label: ''
       },
       loading: false,
       tableData: [],
@@ -134,7 +147,7 @@ export default {
   },
   computed: {
     ...mapState({
-      tableHeight: (state) => state.menu.deviceHeight - 120
+      tableHeight: (state) => state.menu.deviceHeight - 220
     })
   },
   created () {
@@ -159,6 +172,9 @@ export default {
         this.totalCount = res.total
         this.loading = false
       })
+    },
+    searchBtn () {
+      this.loadData()
     },
     view (row) {
       if (row.iconCode === 1) {

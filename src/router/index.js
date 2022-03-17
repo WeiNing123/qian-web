@@ -131,20 +131,27 @@ router.afterEach(() => {
  * @param {*} routes 递归创建的动态(菜单)路由
  */
 function addDynamicRoutes (menuList = [], routes = []) {
-  var temp = []
-  for (var i = 0; i < menuList.length; i++) {
+  let temp = []
+  let list = []
+  for (let i = 0; i < menuList.length; i++) {
     if (menuList[i].children && menuList[i].children.length >= 1) {
       temp = temp.concat(menuList[i].children)
     } else if (menuList[i].path && /\S/.test(menuList[i].path)) {
-      const url = menuList[i].path
+      let url = menuList[i].path.split('?')[0]
+      let exist = false
       if (!url) continue
+      list.forEach((lj) => {
+        if (lj === url) {
+          exist = true
+        }
+      })
+      if (exist) continue
+      list.push(url)
       // 创建路由配置
-      var route = {
+      let route = {
         path: url,
         component: null,
-        name: menuList[i].label,
         meta: {
-          title: menuList[i].label,
           icon: menuList[i].icon,
           closable: true,
           affix: false
@@ -152,7 +159,7 @@ function addDynamicRoutes (menuList = [], routes = []) {
       }
       try {
         // 根据菜单URL动态加载vue组件，这里要求vue组件须按照url路径存储
-        // 如url='sys/user'，则组件路径应是'@/views/sys/index.vue',否则组件加载不到
+        // 如url='sys/user'，则组件路径应是'@/views/sys/user/index.vue',否则组件加载不到
         if (menuList[i].children && menuList[i].children.length > 0) {
           route['component'] = resolve => require([`@/layout`], resolve)
           route['redirect'] = 'noRedirect'

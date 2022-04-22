@@ -168,4 +168,7 @@ export default {
   bottom: 10px;
   font-size: 15px;
 }
+>>> .el-form-item--small .el-form-item__content, .el-form-item--small .el-form-item__label {
+  line-height: 32px;
+}
 </style>

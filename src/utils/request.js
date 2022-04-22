@@ -77,16 +77,24 @@ request.interceptors.response.use((response) => {
       })
     }, 1000)
   } else if (response.data.code === 303) {
-    console.log(11111)
     ElementUI.Notification({
       title: '登录超时',
       message: '登录超时，请重新登录...',
       type: 'error'
     })
-    console.log(22222)
     setTimeout(() => {
       store.dispatch('Logout').then(() => {
-        console.log(33333)
+        window.location.reload()
+      })
+    }, 1000)
+  } else if (response.data.code === 304) {
+    ElementUI.Notification({
+      title: '提示',
+      message: '验证码不正确',
+      type: 'error'
+    })
+    setTimeout(() => {
+      store.dispatch('Logout').then(() => {
         window.location.reload()
       })
     }, 1000)

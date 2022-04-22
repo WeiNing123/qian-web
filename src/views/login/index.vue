@@ -11,6 +11,20 @@
           <el-form-item prop="password">
             <el-input placeholder="请输入密码" type="password" prefix-icon="el-icon-lock" v-model="params.password" size="large" @keyup.enter.native="submitForm('loginForm')"></el-input>
           </el-form-item>
+          <el-form-item prop="securityCode">
+            <el-col :span="15">
+              <el-input placeholder="请输入验证码" prefix-icon="el-icon-lock" v-model="params.securityCode" size="large" @keyup.enter.native="submitForm('loginForm')"></el-input>
+            </el-col>
+            <el-col :span="9">
+              <div style="width: 100%; height: 40px; background: #ffffff;">
+                <img
+                  style="width: 100%; height: 40px;"
+                  :src="authImgUrl"
+                  @click="getSecurityCode"
+                />
+              </div>
+            </el-col>
+          </el-form-item>
           <div style="width: 100%; height: 15px;">&nbsp;</div>
           <el-form-item>
             <el-button
@@ -32,19 +46,23 @@
 <script>
 import md5 from 'md5'
 import { mapActions } from 'vuex'
+import { baseUrl } from '@/api/base'
 
 export default {
   data () {
     return {
       bgImg: require('@/assets/image/login.jpg'),
+      authImgUrl: '',
       isLoginError: false,
       params: {
         username: '',
-        password: ''
+        password: '',
+        securityCode: ''
       },
       loginParams: {
         userCode: '',
-        password: ''
+        password: '',
+        securityCode: ''
       },
       state: {
         loginBtn: false
@@ -56,6 +74,9 @@ export default {
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 6, message: '密码长度不低于5个字符', trigger: 'blur' }
+        ],
+        securityCode: [
+          { required: true, message: '请输入验证码', trigger: 'blur' }
         ]
       }
     }
@@ -64,6 +85,9 @@ export default {
     loginHeight () {
       return window.innerHeight + 'px'
     }
+  },
+  created () {
+    this.getSecurityCode()
   },
   methods: {
     ...mapActions(['Login']),
@@ -81,6 +105,7 @@ export default {
         if (valid) {
           loginParams.userCode = params.username
           loginParams.password = md5(params.password)
+          loginParams.securityCode = params.securityCode
           setTimeout(() => {
             Login(loginParams)
               .then((res) => this.loginSuccess(res))
@@ -95,6 +120,9 @@ export default {
           }, 600)
         }
       })
+    },
+    getSecurityCode () {
+      this.authImgUrl = baseUrl.url + '/auth/authImg?timestamp=' + new Date().getTime()
     },
     loginSuccess (res) {
       this.isLoginError = false
